@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="keywords" content="{% block keywords %} {{keyword}} {% endblock %}" />
+    <title>
+        {% block title %}
+        My Site
+        {% endblock %}
+    </title>
+
+    {% block css %}
+        <link rel="stylesheet" href="public/css/main.css" />
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+    {% block js %}
+        <script src="public/js/index.js"></script>
+    {% endblock %}
+</html>

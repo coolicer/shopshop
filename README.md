@@ -10,4 +10,8 @@ A shop for node.js
 
 # 运行
 
-nodemon bin\www
+npm start
+
+# 测试
+
+mocha

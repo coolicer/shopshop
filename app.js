@@ -8,20 +8,23 @@ var expressSession = require('express-session');
 var swig = require('swig');
 var app = express();
 
+// 设置
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
-app.set('views','./themes/nodeshop-theme-default/');
+app.set('views','themes/nodeshop-theme-default/');
+
 app.set('view cache', false);
 swig.setDefaults({ cache: false });
 
+// 中间件
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser(config.session_secret));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public',express.static(path.join(__dirname, 'public/')));
 app.use(expressSession({ secret: config.session_secret ,resave: true, saveUninitialized: true})); // session secret
 
-// custom middleware
+// 自定义中间件
 // app.use(auth.authUser);
 
 // 加载路由
@@ -34,6 +37,7 @@ app.use('/', routes);
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
+    console.log(err)
     next(err);
 });
 

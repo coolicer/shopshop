@@ -3,6 +3,7 @@ var app = require('../app');
 var config = require('../config/config');
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+// var Message = require();
 
 app.set('port', process.env.PORT || config.port);
 
@@ -10,9 +11,12 @@ server.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + server.address().port);
 });
 
-io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
-});
+// TODO
+// 把io分离到 socket.IO目录下
+
+// io.on('connection', function (socket) {
+//   socket.emit('news', { hello: 'world' });
+//   socket.on('my other event', function (data) {
+//     console.log(data);
+//   });
+// });

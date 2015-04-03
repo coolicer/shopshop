@@ -1,3 +1,9 @@
-{{message}}
+{% extends 'layout.html' %}
 
-{{error}}
+{% block content %}
+    message:
+    <p>{{message}}</p>
+
+    error:
+    <p>{{error}}</p>
+{% endblock %}
