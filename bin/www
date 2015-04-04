@@ -2,7 +2,7 @@
 var app = require('../app');
 var config = require('../config/config');
 var server = require('http').Server(app);
-var io = require('socket.io')(server);
+// var io = require('socket.io')(server);
 // var Message = require();
 
 app.set('port', process.env.PORT || config.port);

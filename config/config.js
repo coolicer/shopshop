@@ -1,12 +1,12 @@
 module.exports = {
     debug: true,
-    name:'nodeshop',
+    name:'shopshop',
     host:'localhost',
     port:'3000',
-    session_secret: 'nodeshop',
+    session_secret: 'shopshop',
     auth_cookie_name:'id',
     database:{
-        name: 'nodeshop',
+        name: 'shopshop',
         username: 'root',
         password: '123456',
         options:{
@@ -16,7 +16,7 @@ module.exports = {
         }
     },
     mail_opts:{
-        user: 'services@nodeshop.com',
+        user: 'services@shopshop.com',
         apiKey:'key-ada202eb12f91c1b4429d3fc861c4dbe',
         domain:'coolicer.com'
     },

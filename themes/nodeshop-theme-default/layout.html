@@ -3,7 +3,6 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <meta name="keywords" content="{% block keywords %} {{keyword}} {% endblock %}" />
     <title>
         {% block title %}
         My Site
@@ -19,6 +18,6 @@
     {% endblock %}
 </body>
     {% block js %}
-        <script src="public/js/index.js"></script>
+        <script src="public/build/bundle.js"></script>
     {% endblock %}
 </html>
