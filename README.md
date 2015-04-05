@@ -8,9 +8,8 @@ A shop for node.js
 
 # 运行
 
-### 开发环境 (暂时没找到方法，要运行2个窗口)
+### 开发环境
 + npm run start-dev
-+ npm run watch
 
 ### 线上
 + npm  start

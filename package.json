@@ -11,7 +11,7 @@
     "watch-css": "catw public/css/*.css  -o public/build/bundle.css -v",
     "watch": "npm run watch-js & npm run watch-css",
     "start": "npm run build && node ./bin/www",
-    "start-dev": "nodemon ./bin/www",
+    "start-dev": "npm run watch & nodemon ./bin/www",
     "test": "mocha test/*.js"
   },
   "repository": {

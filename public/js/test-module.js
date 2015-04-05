@@ -1,4 +1,10 @@
-function hi(test){
-    console.log("你好， " + test);
+function hi(text){
+    console.log("你好， " + text);
 }
-module.exports = hi;
+function antherFunction(text) {
+	hi(text);
+}
+module.exports = {
+	hi            : hi,
+	antherFunction: antherFunction
+};
