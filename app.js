@@ -4,7 +4,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var config = require('./config/config');
-var expressSession = require('express-session');
+var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
+var auth = require('./middlewares/auth');
 var swig = require('swig');
 var app = express();
 
@@ -22,10 +24,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser(config.session_secret));
 app.use('/public',express.static(path.join(__dirname, 'public/')));
-app.use(expressSession({ secret: config.session_secret ,resave: true, saveUninitialized: true})); // session secret
+
+// 使用redis做缓存
+app.use(session({
+    store: new RedisStore(config.redisOptions || {}),
+    secret: config.session_secret,
+    resave: false,
+    saveUninitialized: true
+}));
 
 // 自定义中间件
-// app.use(auth.authUser);
+app.use(auth.checkRedis);
 
 // 加载路由
 var routes = require('./routes/index')(app);

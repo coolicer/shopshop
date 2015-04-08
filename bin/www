@@ -5,7 +5,7 @@ var server = require('http').Server(app);
 // var io = require('socket.io')(server);
 // var Message = require();
 
-app.set('port', process.env.PORT || config.port);
+app.set('port', process.env.PORT || config.site.port);
 
 server.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + server.address().port);
