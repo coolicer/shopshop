@@ -14,7 +14,12 @@ module.exports = {
         options:{
             timezone : "+08:00",
             host: '127.0.0.1',
-            dialect: 'mysql'
+            dialect: 'mysql',
+            pool: {
+                maxConnections : 20,    // 最大连接数
+                minConnections : 0,
+                maxIdleTime    : 30000  // 最大空闲时间
+            },
         }
     },
     redisOptions: {
