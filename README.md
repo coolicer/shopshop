@@ -6,6 +6,11 @@ A shop for node.js
 
 +  npm i (或使用cnpm)
 
+# 软件
+
++ mysql
++ redis
+
 # 运行
 
 ### 开发环境
