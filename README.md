@@ -5,11 +5,8 @@ A shop for node.js
 # 安装依赖
 
 +  npm i (或使用cnpm)
-
-# 软件
-
-+ mysql
-+ redis
++  mysql
++  redis
 
 # 运行
 
