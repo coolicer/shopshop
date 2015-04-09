@@ -29,8 +29,8 @@ app.use('/public',express.static(path.join(__dirname, 'public/')));
 app.use(session({
     store: new RedisStore(config.redisOptions || {}),
     secret: config.session_secret,
-    resave: false,
-    saveUninitialized: true
+    resave: false,              // don't create session until something stored,
+    saveUninitialized: false    // don't save session if unmodified
 }));
 
 // 自定义中间件
