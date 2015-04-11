@@ -25,9 +25,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser(config.session_secret));
 app.use('/public',express.static(path.join(__dirname, 'public/')));
 
-// 使用redis做缓存
+// 使用redis做session的存储
 app.use(session({
-    store: new RedisStore(config.redisOptions || {}),
+    store: new RedisStore(config.redisOptions),
     secret: config.session_secret,
     resave: false,              // don't create session until something stored,
     saveUninitialized: false    // don't save session if unmodified
