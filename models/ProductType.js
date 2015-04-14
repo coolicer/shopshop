@@ -6,26 +6,26 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         autoIncrement: true
     },
-    TypeName:{
+    typeName:{
         type:DataTypes.STRING,
         allowNull: false
     },
-    TypeDesc:{
+    typeDesc:{
         type:DataTypes.STRING
     },
-    TsLeaf:{
+    isLeaf:{
         type:DataTypes.BOOLEAN
     },
-    PrentId:{
+    prentId:{
         type:DataTypes.BIGINT
     },
-    Path:{
+    path:{
         type:DataTypes.STRING
     },
-    Creater:{
+    creater:{
         type: DataTypes.STRING
     },
-    Updater:{
+    updater:{
         type:DataTypes.STRING
     }
 });

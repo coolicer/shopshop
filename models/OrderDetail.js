@@ -19,11 +19,11 @@ module.exports = function(sequelize, DataTypes) {
             references : 'Product',
             referencesKey:'ProductId'
         },
-        ProductPrice: {
+        productPrice: {
             type: DataTypes.DECIMAL(10,2),
             allowNull: false
         },
-        ProductCount: {
+        productCount: {
             type: DataTypes.INTEGER
         }
     });

@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
             referencesKey:'UserId',
             onDelete: 'CASCADE'
         },
-        ReceiverName: {
+        receiverName: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -35,13 +35,13 @@ module.exports = function(sequelize, DataTypes) {
         phone: {
             type: DataTypes.STRING
         },
-        PostCode: {
+        postCode: {
             type: DataTypes.STRING
         },
-        OrderTag: {
+        orderTag: {
             type: DataTypes.INTEGER   //0：未发货；1：已发货；其他待定
         },
-        OrderMark: {
+        orderMark: {
             type: DataTypes.STRING
         }
     });

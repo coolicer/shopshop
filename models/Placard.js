@@ -6,18 +6,18 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             autoIncrement: true
         },
-        PlacardTitle: {
+        placardTitle: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        PlacardContent: {
+        placardContent: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        IssueDate: {
+        issueDate: {
             type: DataTypes.DATE
         },
-        ExpireDate: {
+        expireDate: {
             type: DataTypes.DATE
         }
     });

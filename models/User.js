@@ -6,10 +6,10 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             autoIncrement: true
         },
-        Username: {
+        userName: {
             type: DataTypes.STRING
         },
-        Password: {
+        passWord: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -29,20 +29,20 @@ module.exports = function(sequelize, DataTypes) {
         avatar_url:{
             type: DataTypes.STRING
         },
-        IsActived: {
+        isActived: {
             type: DataTypes.BOOLEAN,
             defaultValue: 0
         },
         amount: {
             type: DataTypes.DECIMAL(10, 2)  //用户消费总额
         },
-        AuthorizeTag: {
+        authorizeTag: {
             type: DataTypes.INTEGER         //0：代表注册用户；1：代表系统管理员；其他权限待定
         },
-        Retrieve_key:{
+        retrieve_key:{
             type: DataTypes.STRING
         },
-        Retrieve_time:{
+        retrieve_time:{
             type: DataTypes.DATE
         }
     });

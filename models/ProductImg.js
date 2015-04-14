@@ -12,16 +12,16 @@ module.exports = function(sequelize, DataTypes) {
         references : 'Product',  // 注意这个是表名
         referencesKey:'ProductId'
     } ,
-    MaxImgAddr:{
+    maxImgAddr:{
         type:DataTypes.STRING
     },
-    MidImgAddr:{
+    midImgAddr:{
         type:DataTypes.STRING
     },
-    MinImgAddr:{
+    minImgAddr:{
         type:DataTypes.STRING
     },
-    ImgDesc:{
+    imgDesc:{
         type:DataTypes.STRING
     }
 });

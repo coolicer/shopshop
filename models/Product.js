@@ -12,11 +12,11 @@ module.exports = function(sequelize, DataTypes) {
         references : 'ProductType', // 注意这个是表名
         referencesKey:'ProductTypeId'
     } ,
-    ProductName:{
+    productName:{
         type:DataTypes.STRING,
         allowNull: false
     },
-    ProductDesc:{
+    productDesc:{
         type:DataTypes.STRING
     },
     mount:{
@@ -25,10 +25,10 @@ module.exports = function(sequelize, DataTypes) {
     price:{
         type:DataTypes.DECIMAL(10,2)
     },
-    IsSale:{
+    isSale:{
         type:DataTypes.BOOLEAN
     },
-    IsVailed:{
+    isVailed:{
         type:DataTypes.BOOLEAN
     }
 });
