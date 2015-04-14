@@ -5,7 +5,6 @@ A shop for node.js
 # 安装依赖
 
 +  npm install (或使用cnpm install)
-+  npm install -g nodemon ( windows用户专用 )
 +  mysql (主数据库)
 +  redis (缓存)
 

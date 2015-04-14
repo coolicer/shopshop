@@ -1,3 +1,2 @@
 start /b npm run watch
-nodemon .\bin\www
-
+node ./node_modules/nodemon/bin/nodemon.js .\bin\www
