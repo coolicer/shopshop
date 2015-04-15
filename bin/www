@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var app = require('../app');
+var app    = require('../app');
 var config = require('../config/config');
 var server = require('http').Server(app);
 // var io = require('socket.io')(server);

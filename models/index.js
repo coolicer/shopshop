@@ -1,8 +1,8 @@
 var Sequelize = require('sequelize');
 var config    = require('../config/config').database;
-var fs  = require("fs");
-var path = require("path");
-var db = {};
+var fs        = require("fs");
+var path      = require("path");
+var db        = {};
 // initialize database connection
 var sequelize = new Sequelize(
     config.name,
@@ -22,6 +22,6 @@ fs
     });
 
 // export connection
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+db.sequelize   = sequelize;
+db.Sequelize   = Sequelize;
 module.exports = db;

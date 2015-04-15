@@ -13,7 +13,7 @@ A shop for node.js
 ### 开发环境
 + npm run dev ( windows用户双击run.bat )
 
-### 线上
+### 生产环境
 + npm  start
 
 # 测试

@@ -1,14 +1,14 @@
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
+var express      = require('express');
+var path         = require('path');
+var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var config = require('./config/config');
-var session = require('express-session');
-var RedisStore = require('connect-redis')(session);
-var auth = require('./middlewares/auth');
-var swig = require('swig');
-var app = express();
+var bodyParser   = require('body-parser');
+var config       = require('./config/config');
+var session      = require('express-session');
+var RedisStore   = require('connect-redis')(session);
+var auth         = require('./middlewares/auth');
+var swig         = require('swig');
+var app          = express();
 
 // 设置
 app.engine('html', swig.renderFile);

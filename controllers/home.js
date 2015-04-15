@@ -1,5 +1,5 @@
 // var config = require('../config/config');
-var User = require('../proxy').User
+var User       = require('../proxy').User
 var redisCache = require('../lib/redisCache')
 
 exports.index = function(req,res,next){
