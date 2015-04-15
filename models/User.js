@@ -14,7 +14,8 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         gender: {
-            type: DataTypes.STRING(4)        //male表示男性，female表示女性
+            type: DataTypes.BOOLEAN,
+            comment: "0 代表男，1 代表女"
         },
         email: {
             type: DataTypes.STRING,
@@ -31,13 +32,17 @@ module.exports = function(sequelize, DataTypes) {
         },
         isActived: {
             type: DataTypes.BOOLEAN,
-            defaultValue: 0
+            defaultValue: 0,
+            comment: "用户是否激活"
         },
         amount: {
-            type: DataTypes.DECIMAL(10, 2)  //用户消费总额
+            type: DataTypes.DECIMAL(10, 2),
+            comment: "用户消费总额"
         },
         authorizeTag: {
-            type: DataTypes.INTEGER         //0：代表注册用户；1：代表系统管理员；其他权限待定
+            type: DataTypes.INTEGER,         
+            defaultValue: 0,
+            comment: "0：代表注册用户；1：代表系统管理员；其他权限待定"
         },
         retrieve_key:{
             type: DataTypes.STRING

@@ -9,8 +9,9 @@ module.exports = function(sequelize, DataTypes) {
     ProductId:{
         type:DataTypes.BIGINT,
         allowNull: false,
-        references : 'Product',  // 注意这个是表名
-        referencesKey:'ProductId'
+        references : 'Product',
+        referencesKey:'ProductId',
+        comment: "references对应的是表名"
     } ,
     maxImgAddr:{
         type:DataTypes.STRING

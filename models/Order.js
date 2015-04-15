@@ -39,7 +39,8 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING
         },
         orderTag: {
-            type: DataTypes.INTEGER   //0：未发货；1：已发货；其他待定
+            type: DataTypes.INTEGER,
+            comment: "0：未发货；1：已发货；其他待定" 
         },
         orderMark: {
             type: DataTypes.STRING
