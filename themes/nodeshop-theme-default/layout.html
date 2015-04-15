@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,7 @@
     <!-- Bootstrap -->
     {% block css %}
         <link href="public/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="public/css/global.css" rel="stylesheet">
     {% endblock %}
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,9 +23,32 @@
     <![endif]-->
 </head>
 <body>
+    <header class="navbar navbar-inverse navbar-static-top header-top">
+         <div class="container">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand">ShopShop</a>
+            </div>
+            <nav class="collapse navbar-collapse" role="navigation">
+              <ul class="nav navbar-nav">
+                <li>
+                  <a href="/getting-started/">起步</a>
+                </li>
+                <li>
+                    <a href="/aboutus">关于我们</a>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/signup">注册</a></li>
+                <li><a href="/signin">登录</a></li>
+              </ul>
+            </nav>
+        </div>
+    </header>
     {% block content %}
     {% endblock %}
 </body>
+    
+   
     {% block js %}
         <script src="public/jquery/jquery.min.js"></script>
         <script src="public/build/bundle.js"></script>

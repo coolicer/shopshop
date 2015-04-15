@@ -9,5 +9,42 @@
 {% endblock %}
 
 {% block content %}
-    <p>注册</p>
+
+    <div class="container">
+    	<div class="row">
+    		<div class="col-md-6 col-md-offset-3">
+    			<form method="post" action="/signup">
+					<div class="form-group">
+					    <label for="email">电子邮箱</label>
+					    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+					</div>
+					<div class="form-group">
+					    <label for="loginname">用户名</label>
+					    <input type="text" class="form-control" id="loginname" name="loginname" placeholder="input a user name">
+					</div>
+					<div class="form-group">
+					    <label for="password">密码</label>
+					    <input type="password" class="form-control" id="password" name="password" placeholder="type Password">
+					</div>
+					<div class="form-group">
+					    <label for="_password">确认</label>
+					    <input type="password" class="form-control" id="_password" name="_password" placeholder="repeat Password">
+					</div>
+
+					<button type="submit" class="btn btn-default">注册</button>
+				</form>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="col-md-6 col-md-offset-3">
+    			{% if status == 'fail' %}
+    			<div class="alert alert-warning alert-dismissible fade in" role="alert">
+			      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			      {{ message }}
+			    </div>
+				{% endif %}
+    		</div>
+    	</div>
+    </div>
+	
 {% endblock %}

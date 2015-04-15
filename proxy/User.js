@@ -16,8 +16,11 @@ exports.findByIdOrEmail = function (name, email, callback) {
             { email    : email }
         )
     })
-        .finally( function(err, result){
-            callback(err, result)
+        .then(function(result){
+            callback(null,result)
+        })
+        .catch(function(err){
+            callback(err)
         })
 };
 
@@ -30,7 +33,10 @@ exports.getUserById = function (id, callback) {
     User.findOne({
             where: { UserId: id }
         })
-            .finally( function(err, result){
-                callback(err, result)
+            .then(function(result){
+                callback(null,result)
+            })
+            .catch(function(err){
+                callback(err)
             })
 }
