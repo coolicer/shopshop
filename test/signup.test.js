@@ -1,23 +1,36 @@
-var express = require('express')
-var request = require('supertest')
+var app = require('../app')
+var request = require('supertest')(app)
 var should  = require('should')
 
-describe('signup', function(){
+describe('Signup', function(){
 
-    it("should not pass when has empty field", function (done){
-        var app = express()
-        
-        app.post('/signup', function(req, res){
-            res.body = {
-                loginname : 'test',
-                password  : 'password'
-            }
-            res.sendStatus(422)
-        });
+    it("should return correct Content-Type", function (done){
+   
+        request
+            .get('/signup')
+            .expect('Content-Type', 'text/html; charset=utf-8')
+            .expect(200, done)
+            
+    });
 
-        request(app)
+    it("should return 404", function (done){
+   
+        request
+            .get('/signup123')
+            .expect(404, done)
+            
+    });
+
+    it(".post should return error message", function (done){
+   
+        request
             .post('/signup')
-            .expect(422, done);
+            .send( { loginname: "test", password: "123456"} )
+            .expect('statusCode', 422)
+            .end(function(err, res){
+
+                done()
+            })
     });
 
 })

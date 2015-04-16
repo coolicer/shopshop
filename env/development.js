@@ -30,5 +30,6 @@ module.exports = {
         user: 'services@shopshop.com',
         apiKey:'key-ada202eb12f91c1b4429d3fc861c4dbe',
         domain:'coolicer.com'
-    }
+    },
+    customGravatarDefaultImage: ''
 };

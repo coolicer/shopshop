@@ -3,7 +3,7 @@ var router   = express.Router();
 
 /*controllers here*/
 var home     = require('../controllers/home');
-var registry = require('../controllers/registry');
+var account = require('../controllers/account');
 
 
 module.exports = function(app) {
@@ -11,8 +11,8 @@ module.exports = function(app) {
     router.get('/', home.index);
 
     // 注册
-    router.get('/signup', registry.GET_signup)
-    	  .post('/signup', registry.POST_signup);
+    router.get('/signup', account.GET_signup)
+    	  .post('/signup', account.POST_signup);
 
     return router;
 };
