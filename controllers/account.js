@@ -36,8 +36,6 @@ exports.POST_signup = function(req,res,next) {
     
     // 1 验证数据正确性
     isDataValid(data, function(err, results) {
-        console.log('err->', err)
-        console.log('results->', results)
         if (err)  {
             return res.render('account/signup', {
                 status: 'fail',
@@ -81,27 +79,32 @@ exports.POST_signup = function(req,res,next) {
                 if(!util.isEmailValid(userData.email)) {
                     next('邮箱格式不正确')
                 }
+                next()
             },
             userNameValid: function(next) {
                 var len = userData.username.length
                 if(len < 5 || !util.isUserNameValid(userData.username)) {
                    next('用户名格式不正确')
                 }
+                next()
             },
             passwordValid: function(next) {
                 if(!util.isPasswordValid(userData.password)) {
                     next('密码格式不正确')
                 }
+                next()
             },
             checkPasswordLength: function(next) {
                 if(userData.password.length < 8) {
                     next('密码长度必须大于8位数字')
                 }
+                next()
             },
             comparePassword: function(next){
                 if(userData.password !== userData._password) {
                     next('两次输入密码不相等')
                 }
+                next()
             },
             emailAvailable: function(next) {
                 if(userData.email) {
@@ -109,19 +112,14 @@ exports.POST_signup = function(req,res,next) {
                         if (err) {
                             next(err)
                         }
-                        if(!!available) {
-                            console.log(1)
-                            next(null)
-                        }else{
-                            console.log(2)
-                            next('邮箱已经使用')
-                        }
-                        // cb( !!available ? null : '邮箱已经使用')
+                 
+                        next(!!available ? null : '邮箱已经使用')
                     })
                  }
             }
         }, callback);
     }
+    
 }
 
 /*
