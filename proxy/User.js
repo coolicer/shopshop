@@ -86,12 +86,22 @@ exports.checkEmailAvailable = function (email,callback) {
         })
 }
 
+/**
+ * 根据用户password，生成pass哈希
+ * @param {String} password 用户password
+ * @param {Function} callback 回调函数
+ */
 exports.hashPassword = function (password, callback) {
     util.bhash(password, '', callback)
 }
 
-exports.createNewUser = function(data, callback){
-    User.build(data)
+/**
+ * 添加新用户
+ * @param {Object} userData 用户注册信息
+ * @param {Function} callback 回调函数
+ */
+exports.createNewUser = function(userData, callback){
+    User.build(userData)
         .save()
         .then(callback)
 }

@@ -40,7 +40,14 @@
     			{% if status == 'fail' %}
     			<div class="alert alert-warning alert-dismissible fade in" role="alert">
 			      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-			      {{ message }}
+			      <p class="bg-warning">{{ message }}</p>
+			    </div>
+			    {% endif %}
+
+			    {% if status =='ok' %}
+			     <div class="alert alert-success alert-dismissible fade in" role="alert">
+			      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			      <p class="bg-success">{{ message }}</p>
 			    </div>
 				{% endif %}
     		</div>

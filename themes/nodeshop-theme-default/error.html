@@ -1,9 +1,23 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    message:
-    <p>{{message}}</p>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div>
+					<p>
+						status: <span> {{status}} </span> 
+					</p>
 
-    error:
-    <p>{{error}}</p>
+				    <p>
+				    	message:<span>{{message}}</span>
+				    </p>
+
+
+				    <a href="{{referer}}">返回</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 {% endblock %}

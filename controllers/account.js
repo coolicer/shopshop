@@ -28,15 +28,20 @@ exports.POST_signup = function(req,res,next) {
         email     = validator.escape(email)
 
     var data = {
-        username : username,
-        password : password,
-        email    : email
+        username  : username,
+        password  : password,
+        _password : _password,
+        email     : email
     }
     
     // 1 验证数据正确性
     isDataValid(data, function(err) {
+        console.log('err->', err)
         if (err)  {
-            return next(err)
+            return res.render('account/signup',{
+                status: 'fail',
+                message: err
+            })
         }
         var gravatar = User.createGravatarURLFromEmail(email)
         var userData = {
@@ -48,7 +53,7 @@ exports.POST_signup = function(req,res,next) {
             isActived  : 0,
             amount     : 0
         }
-
+        // 2 生成passhash并添加新用户
         async.waterfall([
             function(next) {
                 User.hashPassword(data.password, next)
@@ -71,34 +76,39 @@ exports.POST_signup = function(req,res,next) {
 
 	function isDataValid(userData, callback) {
         async.parallel({
-            emailValid: function(next) {
-                if (userData.email) {
-                    next(!util.isEmailValid(userData.email) ? new Error('[[error:invalid-email]]') : null);
-                } else {
-                    next();
+            emailValid: function(cb) {
+                if(!util.isEmailValid(userData.email)) {
+                    cb('邮箱格式不正确')
                 }
             },
-            userNameValid: function(next) {
-                next((!util.isUserNameValid(userData.username)) ? new Error('[[error:invalid-username]]') : null);
-            },
-            passwordValid: function(next) {
-                if (userData.password) {
-                    next(!util.isPasswordValid(userData.password) ? new Error('[[error:invalid-password]]') : null);
-                } else {
-                    next();
+            userNameValid: function(cb) {
+                var len = userData.username.length
+                if(len < 5 || !util.isUserNameValid(userData.username)) {
+                   cb('用户名格式不正确')
                 }
             },
-            emailAvailable: function(next) {
-                if (userData.email) {
-                    User.checkEmailAvailable(userData.email, function(err, available) {
-                        if (err) {
-                            return next(err);
-                        }
-                        next(!available ? new Error('[[error:email-taken]]') : null);
-                    });
-                } else {
-                    next();
+            passwordValid: function(cb) {
+                if(!util.isPasswordValid(userData.password)) {
+                    cb('密码格式不正确')
                 }
+            },
+            checkPasswordLength: function(cb) {
+                if(userData.password.length < 8) {
+                    cb('密码长度必须大于8位数字')
+                }
+            },
+            comparePassword: function(cb){
+                if(userData.password !== userData._password) {
+                    cb('两次输入密码不相等')
+                }
+            },
+            emailAvailable: function(cb) {
+                User.checkEmailAvailable(userData.email, function(err, available) {
+                    if (err) {
+                        cb(err);
+                    }
+                    cb( !!available ? null : '邮箱已经使用')
+                })
             }
         }, callback);
     }
