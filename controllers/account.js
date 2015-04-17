@@ -35,10 +35,11 @@ exports.POST_signup = function(req,res,next) {
     }
     
     // 1 验证数据正确性
-    isDataValid(data, function(err) {
+    isDataValid(data, function(err, results) {
         console.log('err->', err)
+        console.log('results->', results)
         if (err)  {
-            return res.render('account/signup',{
+            return res.render('account/signup', {
                 status: 'fail',
                 message: err
             })
@@ -76,39 +77,48 @@ exports.POST_signup = function(req,res,next) {
 
 	function isDataValid(userData, callback) {
         async.parallel({
-            emailValid: function(cb) {
+            emailValid: function(next) {
                 if(!util.isEmailValid(userData.email)) {
-                    cb('邮箱格式不正确')
+                    next('邮箱格式不正确')
                 }
             },
-            userNameValid: function(cb) {
+            userNameValid: function(next) {
                 var len = userData.username.length
                 if(len < 5 || !util.isUserNameValid(userData.username)) {
-                   cb('用户名格式不正确')
+                   next('用户名格式不正确')
                 }
             },
-            passwordValid: function(cb) {
+            passwordValid: function(next) {
                 if(!util.isPasswordValid(userData.password)) {
-                    cb('密码格式不正确')
+                    next('密码格式不正确')
                 }
             },
-            checkPasswordLength: function(cb) {
+            checkPasswordLength: function(next) {
                 if(userData.password.length < 8) {
-                    cb('密码长度必须大于8位数字')
+                    next('密码长度必须大于8位数字')
                 }
             },
-            comparePassword: function(cb){
+            comparePassword: function(next){
                 if(userData.password !== userData._password) {
-                    cb('两次输入密码不相等')
+                    next('两次输入密码不相等')
                 }
             },
-            emailAvailable: function(cb) {
-                User.checkEmailAvailable(userData.email, function(err, available) {
-                    if (err) {
-                        cb(err);
-                    }
-                    cb( !!available ? null : '邮箱已经使用')
-                })
+            emailAvailable: function(next) {
+                if(userData.email) {
+                    User.checkEmailAvailable(userData.email, function(err, available) {
+                        if (err) {
+                            next(err)
+                        }
+                        if(!!available) {
+                            console.log(1)
+                            next(null)
+                        }else{
+                            console.log(2)
+                            next('邮箱已经使用')
+                        }
+                        // cb( !!available ? null : '邮箱已经使用')
+                    })
+                 }
             }
         }, callback);
     }
